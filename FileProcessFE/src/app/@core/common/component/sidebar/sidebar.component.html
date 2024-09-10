@@ -1,0 +1,54 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <div class="header-container">
+      <div id="Logos">
+        <img src="../../../../../assets/hamburger.svg" class="menu" (click)="toggle()" />
+      </div>
+    </div>
+
+    <div class="icon-container">
+      <nb-icon icon="bell-outline" class="bell"></nb-icon>
+      <nb-icon icon="email-outline" class="mail"></nb-icon>
+      <nb-icon class="logout" icon="power-outline" title="logout" (click)="open1(dialog)"></nb-icon>
+
+    </div>
+  </nb-layout-header>
+  <nb-sidebar responsive class="sidebar-toggle" [state]="open ? 'expanded' : 'compacted'" tag="left">
+    <!-- <nb-user [name]="open ? '' : ''" [size]="open ? 'giant' : 'medium'" [title]="open ? title : ''" picture={{profilePic}}></nb-user> -->
+    <nb-menu [items]="menus" autoCollapse="false"></nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <ng-content select="router-outlet"></ng-content>
+    <app-scroll *ngIf="showScroll$ | async" (scrollToTop)="onScrollToTop()"></app-scroll>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <div class="row m-2">
+      <div
+        class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 d-flex align-items-center justify-content-center w-100">
+        © copyright 2024 
+      </div>
+    </div>
+  </nb-layout-footer>
+  <ng-template #dialog let-data let-ref="dialogRef">
+   <nb-card>
+    <nb-card-header>
+    <div class="text-center qmark">
+     <nb-icon icon="question-mark-circle-outline" fill="#fe7c96
+
+     "></nb-icon>
+    </div>
+   </nb-card-header>
+    <nb-card-body>
+    <h6>Are you sure, you want to logout?</h6>
+    </nb-card-body>
+    <nb-card-footer>
+    <div class="test d-flex justify-content-between">
+     <div><button nbButton outline status="danger" size="small" (click)="logout()"><nb-icon icon="close-circle-outline"></nb-icon> Logout</button></div>
+     <div><button nbButton outline status="success" size="small" (click)="ref.close()"><nb-icon icon="checkmark-circle-2-outline"></nb-icon> Cancel</button></div>
+    </div>
+    </nb-card-footer>
+   </nb-card>
+   </ng-template>
+</nb-layout>

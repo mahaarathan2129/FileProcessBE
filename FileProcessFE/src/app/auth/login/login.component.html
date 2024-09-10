@@ -1,0 +1,44 @@
+<section class="page-section login-page">
+    <div class="full-width-screen">
+        <div class="container-fluid">
+            <div class="content-detail">
+                <div class="main-info">
+                    <div class="hero-container">
+                        <form class="login-form" method="post" [formGroup]="loginForm">
+                           
+                            <div class="input-control">
+                                <input type="text" placeholder="Enter Username" autocomplete="off"
+                                    formControlName="userName" />
+                                <app-common-validator [error]="loginForms['userName']?.errors"
+                                    [showError]="showError"></app-common-validator>
+                                <span class="password-field-show">
+                                    <div class="input-icons">
+                                        <input name="password" [type]="showPassword ? 'text' : 'password'"
+                                            class="password-field" formControlName="password" value=""
+                                            id="password-field" placeholder="Enter Password" autocomplete="off" />
+                                        <nb-icon icon="eye-outline" (click)="showPassword = !showPassword"
+                                            class="eyeIcon" [class.hide]="!showPassword"></nb-icon>
+                                        <nb-icon icon="eye-off-outline" class="eyeIcon"
+                                            (click)="showPassword = !showPassword"
+                                            [class.hide]="showPassword"></nb-icon>
+                                        <app-common-validator [error]="loginForms['password']?.errors"
+                                            [showError]="showError"></app-common-validator>
+                                    </div>
+                                </span>
+                                <div class="bottombtn">
+                                    <label class="label-container">
+                                        <div class="login-btns">
+                                            <button type="submit" (click)="submitForm()">
+                                                Login
+                                            </button>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

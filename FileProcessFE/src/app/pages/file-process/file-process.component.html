@@ -1,0 +1,40 @@
+<nb-card>
+    <nb-card-header>
+        <h3 class="text-center">Process Files</h3>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="container p-3 col-12 row align-items-end">
+            <div class="col-md-6">
+                <input type="text" id="name" [(ngModel)]="name" name="name" class="form-control"
+                    placeholder="Please Enter File Path..." required>
+            </div>
+            <div class="col-md-4">
+                <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="pt-3 w-100" style="overflow-x: auto;">
+                <div class="table-container">
+                    <table class="table table-bordered table-striped table-responsive">
+                        <thead>
+                            <tr>
+                                <th>File Path</th>
+                                <th>File Name</th>
+                                <th>File Size</th>
+                                <th>Status</th>
+                                <th>Last Processed At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let file of data; let i = index">
+                                <td>{{ file.filePath }}</td>
+                                <td>{{ file.fileName }}</td>
+                                <td>{{ file.fileSize }}</td>
+                                <td>{{ file.status }}</td>
+                                <td>{{ file.lastProcessedAt ?? 'N/A' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
